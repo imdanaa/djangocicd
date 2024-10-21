@@ -1,4 +1,6 @@
-FROM --platform=linux/amd64,linux/arm64 python:3.12-slim as build
+FROM python:3.12-slim as build
+
+docker buildx build --platform linux/amd64,linux/arm64 -t your-image-name:latest .
 
 RUN apt-get update && apt-get install -y --no-install-recommends && rm -rf /var/lib/apt//lists/*
 
